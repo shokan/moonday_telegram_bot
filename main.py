@@ -44,6 +44,6 @@ def next_holiday():
         next_text = 'Следующие выходные через {} дней'.format(delta.days)
     return next_text
     
-messege_text = """Привет! Завтра ({}) температура воздуха будет колебаться от {} С до {} С. Время заката в {} время восхода в {}. Фаза луны: {}. {}""".format(tomorrow_date, mintempC, maxtempC, sunrise, sunset, phase_translate(moon_phase), next_holiday())
+messege_text = """Привет! Завтра ({}) температура воздуха в Астане будет колебаться от {} С до {} С. Время заката в {} время восхода в {}. Фаза луны: {}. {}""".format(tomorrow_date, mintempC, maxtempC, sunrise, sunset, phase_translate(moon_phase), next_holiday())
 
 bot.send_message(chat_id='@AhimsaInfo', text=messege_text)
