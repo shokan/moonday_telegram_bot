@@ -1,4 +1,5 @@
 secret.py
+<<<<<<< HEAD
 .virtualenvs/*
 __pycache__/
 .pythonstartup.py
@@ -10,3 +11,8 @@ viminfo
 .profile
 .viminfo
 .gitconfig
+=======
+.ipynb_checkpoints
+__pycache__
+notepad.ipynb
+>>>>>>> 37a0bc1ebd1447d6bc8abef9cd1e7c2f6e5c7dc5
