@@ -1,0 +1,12 @@
+secret.py
+.virtualenvs/*
+__pycache__/
+.pythonstartup.py
+viminfo
+.vimrc
+.cache/*
+.bashrc
+.local/*
+.profile
+.viminfo
+.gitconfig
