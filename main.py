@@ -3,6 +3,7 @@ import requests as req
 import datetime as dt
 import telegram
 import secret
+import sutras
 
 api_url='https://api.worldweatheronline.com/premium/v1/weather.ashx?q=Astana&num_of_days=2&key={}&format=json&date=tomorrow'.format(secret.tokens['weather_api'])
 bot = telegram.Bot(token=secret.tokens['telegram'])
@@ -47,3 +48,4 @@ def next_holiday():
 messege_text = """Привет! Завтра ({}) температура воздуха в Астане будет колебаться от {} С до {} С. Время восхода в {} время заката в {}. Фаза луны: {}. {}""".format(tomorrow_date, mintempC, maxtempC, sunrise, sunset, phase_translate(moon_phase), next_holiday())
 
 bot.send_message(chat_id='@AhimsaInfo', text=messege_text)
+bot.send_message(chat_id='@AhimsaInfo', text=sutras.s)
