@@ -2,3 +2,12 @@ secret.py
 .ipynb_checkpoints
 __pycache__
 notepad.ipynb
+.virtualenvs/*
+.local/*
+.profile
+.pythonstartup.py
+.viminfo
+.vimrc
+.cache/*
+.bashrc
+
