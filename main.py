@@ -20,7 +20,7 @@ sunset = data['data']['weather'][0]['astronomy'][0]['sunset']
 moon_phase = data['data']['weather'][0]['astronomy'][0]['moon_phase']
 
 def phase_translate(ph):
-    phases = {'New Moon': 'Новолуние', 'Waxing Crescent': 'Молодая луна ', 'First Quarter': 'Первая четверть', 'Waxing Gibbous': 'Прибывающая луна', 'Full Moon': 'Полнолуние', 'Waning Gibbous': 'Убывающая луна', 'Last Quarter': 'Последняя четверть ', 'Waning Crescent': 'Старая луна'}
+    phases = {'New Moon': 'Новолуние', 'Waxing Crescent': 'Молодая луна ', 'First Quarter': 'Первая четверть', 'Waxing Gibbous': 'Растущая Луна', 'Full Moon': 'Полнолуние', 'Waning Gibbous': 'Убывающая луна', 'Last Quarter': 'Последняя четверть ', 'Waning Crescent': 'Старая луна'}
     return phases[ph]
 
 def next_holiday():
@@ -39,11 +39,11 @@ def next_holiday():
     elif delta.days == 1:
         next_text = 'Завтра отдыхаем! Высыпаемся и наслаждаемся круасанами ;)'
     elif  delta.days in (2, 3, 4):
-        next_text = 'Следующие выходные через {} дня'.format(delta.days)
+        next_text = 'Следующий лунный день через {} дня'.format(delta.days)
     else:
-        next_text = 'Следующие выходные через {} дней'.format(delta.days)
+        next_text = 'Следующий лунный день через {} дней'.format(delta.days)
     return next_text
     
-messege_text = """Привет! Завтра ({}) температура воздуха в Астане будет колебаться от {} С до {} С. Время заката в {} время восхода в {}. Фаза луны: {}. {}""".format(tomorrow_date, mintempC, maxtempC, sunrise, sunset, phase_translate(moon_phase), next_holiday())
+messege_text = """Привет! Завтра ({}) температура воздуха в Астане будет колебаться от {} С до {} С. Время восхода в {} время заката в {}. Фаза луны: {}. {}""".format(tomorrow_date, mintempC, maxtempC, sunrise, sunset, phase_translate(moon_phase), next_holiday())
 
 bot.send_message(chat_id='@AhimsaInfo', text=messege_text)
