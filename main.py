@@ -16,7 +16,6 @@ tomorrow_date = data['data']['weather'][0]['date']
 maxtempC = data['data']['weather'][0]['maxtempC']
 mintempC = data['data']['weather'][0]['mintempC']
 totalSnow_cm = data['data']['weather'][0]['totalSnow_cm']
-
 sunrise = data['data']['weather'][0]['astronomy'][0]['sunrise']
 sunset = data['data']['weather'][0]['astronomy'][0]['sunset']
 moon_phase = data['data']['weather'][0]['astronomy'][0]['moon_phase']
@@ -26,16 +25,17 @@ def phase_translate(ph):
     return phases[ph]
 
 def next_holiday():
-    df = pd.read_csv("ashanga_holidays_2019_2020.csv", header=0, index_col=False, parse_dates=[0])
+    dateparse = lambda x: pd.datetime.strptime(x, '%d.%m.%Y')
+    df = pd.read_csv("ashanga_holidays_2019_2020.csv", header=0, index_col=False, parse_dates=[0], date_parser=dateparse)
     d = dt.date.today()
-    for i in df.new_date:
+    for i in df.mdate:
         if i.date()<d:
             pass
         else:
             next_day = i.date()
             delta = next_day - d
             break
-
+    print('{} - {}'.format(next_day, delta))
     if delta.days == 0:
         next_text = ''
     elif delta.days == 1:
@@ -47,6 +47,6 @@ def next_holiday():
     return next_text
 
 messege_text = """Привет! Завтра ({}) температура воздуха в Астане будет колебаться от {} С до {} С. Время восхода в {} время заката в {}. Фаза луны: {}. {}""".format(tomorrow_date, mintempC, maxtempC, sunrise, sunset, phase_translate(moon_phase), next_holiday())
-
+# print(messege_text)
 bot.send_message(chat_id='@AhimsaInfo', text=messege_text)
 bot.send_message(chat_id='@AhimsaInfo', text=sutras.s)
