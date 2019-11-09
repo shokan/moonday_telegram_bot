@@ -35,9 +35,9 @@ def next_holiday():
             next_day = i.date()
             delta = next_day - d
             break
-            
+
     if delta.days == 0:
-        next_text = '' 
+        next_text = ''
     elif delta.days == 1:
         next_text = 'Завтра отдыхаем! Высыпаемся и наслаждаемся круасанами ;)'
     elif  delta.days in (2, 3, 4):
@@ -45,7 +45,7 @@ def next_holiday():
     else:
         next_text = 'Следующий лунный день через {} дней'.format(delta.days)
     return next_text
-    
+
 messege_text = """Привет! Завтра ({}) температура воздуха в Астане будет колебаться от {} С до {} С. Время восхода в {} время заката в {}. Фаза луны: {}. {}""".format(tomorrow_date, mintempC, maxtempC, sunrise, sunset, phase_translate(moon_phase), next_holiday())
 
 bot.send_message(chat_id='@AhimsaInfo', text=messege_text)
